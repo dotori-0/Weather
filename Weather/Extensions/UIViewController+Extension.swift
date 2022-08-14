@@ -6,3 +6,10 @@
 //
 
 import UIKit
+
+
+extension UIViewController {
+    func translate() -> String {
+        
+    }
+}
