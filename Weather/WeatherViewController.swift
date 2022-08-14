@@ -24,6 +24,15 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
 
         locationManager.delegate = self
+        
+        designLabels()
+    }
+    
+    func designLabels() {
+        temperatureLabel.textAlignment = .center
+        temperatureLabel.font = .boldSystemFont(ofSize: 32)
+        weatherLabel.textAlignment = .center
+        weatherLabel.font = .boldSystemFont(ofSize: 32)
     }
     
     
