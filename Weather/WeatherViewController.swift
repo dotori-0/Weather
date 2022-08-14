@@ -8,7 +8,14 @@
 import MapKit
 import UIKit
 
+
+import SwiftyJSON
+
+
 class WeatherViewController: UIViewController {
+    
+    @IBOutlet weak var temperatureLabel: UILabel!
+    @IBOutlet weak var weatherLabel: UILabel!
     
     let locationManager = CLLocationManager()
     
@@ -17,6 +24,34 @@ class WeatherViewController: UIViewController {
         super.viewDidLoad()
 
         locationManager.delegate = self
+    }
+    
+    
+    func setLabels(weather: String, temperature: Double) {
+        
+    }
+    
+    
+    func requestWeather(lat: Double, lon: Double) {
+        APIManager.shared.fetchCurrentWeather(lat: lat, lon: lon) { json in
+            self.parseData(json)
+        }
+    }
+    
+    
+    func parseData(_ json: JSON) {
+        let weather = json["weather"][0]["main"].stringValue
+//        let temperature = json["main"]["temp"].doubleValue
+        let temperature = Measurement(value: json["main"]["temp"].doubleValue, unit: UnitTemperature.kelvin)
+        print(temperature)
+        
+        let formatter = MeasurementFormatter()
+        formatter.unitStyle = .short
+        formatter.locale = Locale.current  // A locale representing the user's region settings at the time the property is read.
+        // ex. 아이폰 설정에서 지역을 독일로 설정하면 25,88° 와 같이 나옴
+        let temperatureFormatted = formatter.string(from: temperature)
+        print(temperatureFormatted)
+        print(formatter.string(from: UnitTemperature.kelvin))
     }
 }
 
@@ -87,7 +122,7 @@ extension WeatherViewController: CLLocationManagerDelegate {
             print("lon type: \(type(of: coordinate.longitude))")
             
             // 🍓 API 통신
-            APIManager.shared.fetchCurrentWeather(lat: coordinate.latitude, lon: coordinate.longitude)
+            requestWeather(lat: coordinate.latitude, lon: coordinate.longitude)
         }
         
 

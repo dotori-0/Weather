@@ -17,7 +17,7 @@ class APIManager {
     private init() { }
     
     
-    func fetchCurrentWeather(lat: Double, lon: Double) {
+    func fetchCurrentWeather(lat: Double, lon: Double, completion: @escaping (JSON) -> ()) {
         let url = Endpoint.getCurrentWeatherURL(lat: lat, lon: lon)
         
         AF.request(url).validate(statusCode: 200...400).responseData { response in
@@ -25,6 +25,9 @@ class APIManager {
                 case .success(let value):
                     let json = JSON(value)
                     print(json)
+                    print(type(of: json))
+                    
+                    completion(json)
                 case.failure(let error):
                     print(error)
             }

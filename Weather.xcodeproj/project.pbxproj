@@ -19,6 +19,7 @@
 		0A01620C28A8FF3A0069C4AF /* APIManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01620B28A8FF3A0069C4AF /* APIManager.swift */; };
 		0A01620F28A8FF900069C4AF /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 0A01620E28A8FF900069C4AF /* Alamofire */; };
 		0A01621228A8FF9B0069C4AF /* SwiftyJSON in Frameworks */ = {isa = PBXBuildFile; productRef = 0A01621128A8FF9B0069C4AF /* SwiftyJSON */; };
+		0A01621528A933030069C4AF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01621428A933030069C4AF /* UIViewController+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,6 +35,7 @@
 		0A01620628A8FE930069C4AF /* APIKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIKey.swift; sourceTree = "<group>"; };
 		0A01620928A8FEF50069C4AF /* Endpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Endpoint.swift; sourceTree = "<group>"; };
 		0A01620B28A8FF3A0069C4AF /* APIManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIManager.swift; sourceTree = "<group>"; };
+		0A01621428A933030069C4AF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 				0A01620828A8FEE80069C4AF /* Network */,
 				0A0161F428A8FC410069C4AF /* Main.storyboard */,
 				0A01620228A8FE1A0069C4AF /* WeatherViewController.swift */,
+				0A01621328A932E90069C4AF /* Extensions */,
 				0A0161F728A8FC420069C4AF /* Assets.xcassets */,
 				0A0161EE28A8FC410069C4AF /* AppDelegate.swift */,
 				0A0161F028A8FC410069C4AF /* SceneDelegate.swift */,
@@ -89,6 +92,14 @@
 				0A01620B28A8FF3A0069C4AF /* APIManager.swift */,
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		0A01621328A932E90069C4AF /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0A01621428A933030069C4AF /* UIViewController+Extension.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -175,6 +186,7 @@
 				0A0161EF28A8FC410069C4AF /* AppDelegate.swift in Sources */,
 				0A01620328A8FE1A0069C4AF /* WeatherViewController.swift in Sources */,
 				0A01620728A8FE930069C4AF /* APIKey.swift in Sources */,
+				0A01621528A933030069C4AF /* UIViewController+Extension.swift in Sources */,
 				0A0161F128A8FC410069C4AF /* SceneDelegate.swift in Sources */,
 				0A01620A28A8FEF50069C4AF /* Endpoint.swift in Sources */,
 			);
