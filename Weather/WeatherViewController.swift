@@ -27,8 +27,9 @@ class WeatherViewController: UIViewController {
     }
     
     
-    func setLabels(weather: String, temperature: Double) {
-        
+    func setLabels(weather: String, temperature: String) {
+        temperatureLabel.text = temperature
+        weatherLabel.text = weather
     }
     
     
@@ -40,7 +41,9 @@ class WeatherViewController: UIViewController {
     
     
     func parseData(_ json: JSON) {
-        let weather = json["weather"][0]["main"].stringValue
+        var weather = json["weather"][0]["main"].stringValue
+        weather.translate()
+        
 //        let temperature = json["main"]["temp"].doubleValue
         let temperature = Measurement(value: json["main"]["temp"].doubleValue, unit: UnitTemperature.kelvin)
         print(temperature)
@@ -52,6 +55,8 @@ class WeatherViewController: UIViewController {
         let temperatureFormatted = formatter.string(from: temperature)
         print(temperatureFormatted)
         print(formatter.string(from: UnitTemperature.kelvin))
+        
+        setLabels(weather: weather, temperature: temperatureFormatted)
     }
 }
 

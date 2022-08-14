@@ -9,7 +9,7 @@ import UIKit
 
 
 extension UIViewController {
-    func translate() -> String {
-        
-    }
+//    func translate() -> String {
+//
+//    }
 }
