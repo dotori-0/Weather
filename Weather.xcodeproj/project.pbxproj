@@ -22,6 +22,8 @@
 		0A01621528A933030069C4AF /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01621428A933030069C4AF /* UIViewController+Extension.swift */; };
 		0A01621728A933750069C4AF /* String+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01621628A933750069C4AF /* String+Extension.swift */; };
 		0A01621928A9706C0069C4AF /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01621828A9706C0069C4AF /* UIImage+Extension.swift */; };
+		0A01621B28A97AB70069C4AF /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A01621A28A97AB70069C4AF /* UIColor+Extension.swift */; };
+		0A01622028A981070069C4AF /* JalpullineunMedium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A01621F28A981070069C4AF /* JalpullineunMedium.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +42,8 @@
 		0A01621428A933030069C4AF /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		0A01621628A933750069C4AF /* String+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extension.swift"; sourceTree = "<group>"; };
 		0A01621828A9706C0069C4AF /* UIImage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
+		0A01621A28A97AB70069C4AF /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		0A01621F28A981070069C4AF /* JalpullineunMedium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = JalpullineunMedium.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +79,7 @@
 		0A0161ED28A8FC410069C4AF /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				0A01621C28A980BF0069C4AF /* Resources */,
 				0A01620628A8FE930069C4AF /* APIKey.swift */,
 				0A01620828A8FEE80069C4AF /* Network */,
 				0A0161F428A8FC410069C4AF /* Main.storyboard */,
@@ -104,8 +109,17 @@
 				0A01621428A933030069C4AF /* UIViewController+Extension.swift */,
 				0A01621628A933750069C4AF /* String+Extension.swift */,
 				0A01621828A9706C0069C4AF /* UIImage+Extension.swift */,
+				0A01621A28A97AB70069C4AF /* UIColor+Extension.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0A01621C28A980BF0069C4AF /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				0A01621F28A981070069C4AF /* JalpullineunMedium.ttf */,
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -177,6 +191,7 @@
 				0A01620528A8FE7C0069C4AF /* .gitignore in Resources */,
 				0A0161FB28A8FC420069C4AF /* LaunchScreen.storyboard in Resources */,
 				0A0161F828A8FC420069C4AF /* Assets.xcassets in Resources */,
+				0A01622028A981070069C4AF /* JalpullineunMedium.ttf in Resources */,
 				0A0161F628A8FC410069C4AF /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -197,6 +212,7 @@
 				0A01621528A933030069C4AF /* UIViewController+Extension.swift in Sources */,
 				0A0161F128A8FC410069C4AF /* SceneDelegate.swift in Sources */,
 				0A01620A28A8FEF50069C4AF /* Endpoint.swift in Sources */,
+				0A01621B28A97AB70069C4AF /* UIColor+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

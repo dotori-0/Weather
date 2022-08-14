@@ -20,6 +20,7 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var feelsLikeLabel: UILabel!
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
+    @IBOutlet weak var feelsLikeButton: UIButton!
     
     var weather = ""
     var temperature = ""
@@ -52,6 +53,34 @@ class WeatherViewController: UIViewController {
         feelsLikeLabel.text = "체감온도: \(apparentTemperature)"
         humidityLabel.text = "습도: \(humidity)"
         windSpeedLabel.text = "풍속: \(windSpeed)"
+    }
+    
+    func setButtons() {
+        var config = UIButton.Configuration.tinted()
+        config.imagePadding = 8
+        config.cornerStyle = .capsule
+        config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
+        config.baseBackgroundColor = .backgroundPink
+        config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
+            var outgoing = incoming
+            outgoing.font = UIFont(name: "Jalpullineunoneul", size: 13)
+            
+            return outgoing
+        }
+        
+        feelsLikeButton.configuration = config
+        feelsLikeButton.setImage(UIImage(systemName: "thermometer"), for: .normal)
+        feelsLikeButton.setTitle(apparentTemperature, for: .normal)
+//        feelsLikeButton.backgroundColor = .backgroundPink
+        feelsLikeButton.tintColor = .titlePink
+//        titleColor(for: .normal) = .titlePink
+//        feelsLikeButton.titleLabel!.font = UIFont(name: "Jalpullineunoneul", size: 44)
+//        feelsLikeButton.titletexta
+        
+        
+        for family in UIFont.familyNames {
+            print("===\(family)===")
+        }
     }
     
     
@@ -121,6 +150,7 @@ class WeatherViewController: UIViewController {
         
         setLabels()
         setImage(id: id)
+        setButtons()
     }
 }
 
