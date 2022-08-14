@@ -16,6 +16,15 @@ class WeatherViewController: UIViewController {
     
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
+    @IBOutlet weak var feelsLikeLabel: UILabel!
+    @IBOutlet weak var humidityLabel: UILabel!
+    @IBOutlet weak var windSpeedLabel: UILabel!
+    
+    var weather = ""
+    var temperature = ""
+    var apparentTemperature = ""
+    var humidity = ""
+    var windSpeed = ""
     
     let locationManager = CLLocationManager()
     
@@ -36,9 +45,12 @@ class WeatherViewController: UIViewController {
     }
     
     
-    func setLabels(weather: String, temperature: String) {
+    func setLabels() {
         temperatureLabel.text = temperature
         weatherLabel.text = weather
+        feelsLikeLabel.text = "체감온도: \(apparentTemperature)"
+        humidityLabel.text = "습도: \(humidity)"
+        windSpeedLabel.text = "풍속: \(windSpeed)"
     }
     
     
@@ -52,6 +64,7 @@ class WeatherViewController: UIViewController {
     func parseData(_ json: JSON) {
         var weather = json["weather"][0]["main"].stringValue
         weather.translate()
+        self.weather = weather
         
 //        let temperature = json["main"]["temp"].doubleValue
         let temperature = Measurement(value: json["main"]["temp"].doubleValue, unit: UnitTemperature.kelvin)
@@ -64,8 +77,22 @@ class WeatherViewController: UIViewController {
         let temperatureFormatted = formatter.string(from: temperature)
         print(temperatureFormatted)
         print(formatter.string(from: UnitTemperature.kelvin))
+        self.temperature = temperatureFormatted
         
-        setLabels(weather: weather, temperature: temperatureFormatted)
+        humidity = "\(json["main"]["humidity"].intValue)%"
+        
+        let apparentTemperature = Measurement(value: json["main"]["feels_like"].doubleValue, unit: UnitTemperature.kelvin)
+        let apparentTemperatureFormatted = formatter.string(from: apparentTemperature)
+        self.apparentTemperature = apparentTemperatureFormatted
+        
+        let windSpeed = Measurement(value: json["wind"]["speed"].doubleValue, unit: UnitSpeed.metersPerSecond)
+//        print("windSpeed: \(windSpeed)")  // 3.6 m/s
+        print(type(of: windSpeed))  // Measurement<NSUnitSpeed>
+//        let windSpeedFormatted = formatter.string(from: windSpeed)
+//        print("windSpeedFormatted: \(windSpeedFormatted)")
+        self.windSpeed = "\(windSpeed)"
+        
+        setLabels()
     }
 }
 
