@@ -14,6 +14,7 @@ import SwiftyJSON
 
 class WeatherViewController: UIViewController {
     
+    @IBOutlet weak var iconImageView: UIImageView!
     @IBOutlet weak var temperatureLabel: UILabel!
     @IBOutlet weak var weatherLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
@@ -51,6 +52,30 @@ class WeatherViewController: UIViewController {
         feelsLikeLabel.text = "체감온도: \(apparentTemperature)"
         humidityLabel.text = "습도: \(humidity)"
         windSpeedLabel.text = "풍속: \(windSpeed)"
+    }
+    
+    
+    func setImage(id: Int) {
+        print(#function, id)
+        let image: UIImage
+        
+        switch id {
+            case 200...232: image = UIImage.image_200_232 ?? UIImage.image_801!  // Thunderstorm
+            case 300...321: image = UIImage.image_300_321 ?? UIImage.image_801!  // Drizzle
+            case 511, 615...616: image = UIImage.image_511_615_616 ?? UIImage.image_801!  // Freezing Rain, or Rain and Snow
+            case 500...531: image = UIImage.image_500_531 ?? UIImage.image_801!  // Rain
+            case 600...622: image = UIImage.image_600_622 ?? UIImage.image_801!  // Snow
+            case 701...721: image = UIImage.image_701_721 ?? UIImage.image_801!  // Mist, Smoke, Haze
+            case 731...762: image = UIImage.image_731_762 ?? UIImage.image_801!  // Dust, Fog, Sand, Dust, Ash
+            case 771...781: image = UIImage.image_771_781 ?? UIImage.image_801!  // Squall, Tornado
+            case 800: image = UIImage.image_800 ?? UIImage.image_801!            // Clear
+            case 801: image = UIImage.image_801!                                 // Clouds(few)
+            case 802: image = UIImage.image_802 ?? UIImage.image_801!            // Clouds(scattered)
+            case 803...804: image = UIImage.image_803_804 ?? UIImage.image_801!  // Clouds(broken, overcast)
+            default: return
+        }
+        
+        iconImageView.image = image
     }
     
     
@@ -92,7 +117,10 @@ class WeatherViewController: UIViewController {
 //        print("windSpeedFormatted: \(windSpeedFormatted)")
         self.windSpeed = "\(windSpeed)"
         
+        let id = json["weather"][0]["id"].intValue
+        
         setLabels()
+        setImage(id: id)
     }
 }
 

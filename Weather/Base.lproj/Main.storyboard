@@ -89,6 +89,7 @@
                     <connections>
                         <outlet property="feelsLikeLabel" destination="FZq-pA-mcK" id="tVY-vZ-L7a"/>
                         <outlet property="humidityLabel" destination="a37-Sb-cOt" id="sb7-KZ-6TS"/>
+                        <outlet property="iconImageView" destination="8U4-vR-9A6" id="jPC-5W-Zqa"/>
                         <outlet property="temperatureLabel" destination="shl-E1-vrZ" id="Xb8-FP-e05"/>
                         <outlet property="weatherLabel" destination="hs8-3O-EjR" id="yyl-GK-zUE"/>
                         <outlet property="windSpeedLabel" destination="ceh-qn-weQ" id="8z0-Xm-uEj"/>
