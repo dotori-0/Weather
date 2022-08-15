@@ -21,6 +21,8 @@ class WeatherViewController: UIViewController {
     @IBOutlet weak var humidityLabel: UILabel!
     @IBOutlet weak var windSpeedLabel: UILabel!
     @IBOutlet weak var feelsLikeButton: UIButton!
+    @IBOutlet weak var humidityButton: UIButton!
+    @IBOutlet weak var windSpeedButton: UIButton!
     
     var weather = ""
     var temperature = ""
@@ -37,30 +39,39 @@ class WeatherViewController: UIViewController {
         locationManager.delegate = self
         
         designLabels()
+        designButtons()
     }
     
     func designLabels() {
-        temperatureLabel.textAlignment = .center
-        temperatureLabel.font = .boldSystemFont(ofSize: 32)
-        weatherLabel.textAlignment = .center
-        weatherLabel.font = .boldSystemFont(ofSize: 32)
+        let labels = [temperatureLabel, weatherLabel]
+
+        for label in labels {
+            label?.textAlignment = .center
+//            label.font = .boldSystemFont(ofSize: 32)
+            label?.font = UIFont(name: "Jalpullineunoneul", size: 32)
+            label?.textColor = .clear
+        }
     }
     
     
     func setLabels() {
         temperatureLabel.text = temperature
+        temperatureLabel.textColor = .label
         weatherLabel.text = weather
+        weatherLabel.textColor = .label
         feelsLikeLabel.text = "체감온도: \(apparentTemperature)"
         humidityLabel.text = "습도: \(humidity)"
         windSpeedLabel.text = "풍속: \(windSpeed)"
     }
     
-    func setButtons() {
+    func designButtons() {
+        let buttons = [feelsLikeButton, humidityButton, windSpeedButton]
+        
         var config = UIButton.Configuration.tinted()
-        config.imagePadding = 8
+        config.imagePadding = 7
         config.cornerStyle = .capsule
         config.contentInsets = NSDirectionalEdgeInsets(top: 12, leading: 4, bottom: 12, trailing: 4)
-        config.baseBackgroundColor = .backgroundPink
+//        config.baseBackgroundColor = .backgroundPink
         config.titleTextAttributesTransformer = UIConfigurationTextAttributesTransformer { incoming in
             var outgoing = incoming
             outgoing.font = UIFont(name: "Jalpullineunoneul", size: 13)
@@ -68,19 +79,41 @@ class WeatherViewController: UIViewController {
             return outgoing
         }
         
-        feelsLikeButton.configuration = config
-        feelsLikeButton.setImage(UIImage(systemName: "thermometer"), for: .normal)
-        feelsLikeButton.setTitle(apparentTemperature, for: .normal)
+        for button in buttons {
+            switch button {
+                case feelsLikeButton:
+                    config.baseBackgroundColor = .backgroundPink
+                    button?.tintColor = .titlePink
+                    button?.setImage(UIImage(systemName: "thermometer"), for: .normal)
+                case humidityButton:
+                    config.baseBackgroundColor = .backgroundBlue
+                    button?.tintColor = .titleBlue
+                    button?.setImage(UIImage(systemName: "humidity.fill"), for: .normal)
+                case windSpeedButton:
+                    config.baseBackgroundColor = .backgroundPurple
+                    button?.tintColor = .titlePurple
+                    button?.setImage(UIImage(systemName: "wind"), for: .normal)
+                default: return
+            }
+            
+            button?.configuration = config
+        }
+        
+//        feelsLikeButton.configuration = config
+//        feelsLikeButton.setImage(UIImage(systemName: "thermometer"), for: .normal)
+//        feelsLikeButton.setTitle(apparentTemperature, for: .normal)
 //        feelsLikeButton.backgroundColor = .backgroundPink
-        feelsLikeButton.tintColor = .titlePink
+//        feelsLikeButton.tintColor = .titlePink
 //        titleColor(for: .normal) = .titlePink
 //        feelsLikeButton.titleLabel!.font = UIFont(name: "Jalpullineunoneul", size: 44)
 //        feelsLikeButton.titletexta
-        
-        
-        for family in UIFont.familyNames {
-            print("===\(family)===")
-        }
+    }
+    
+    
+    func setButtons() {
+        feelsLikeButton.setTitle(apparentTemperature, for: .normal)
+        humidityButton.setTitle(humidity, for: .normal)
+        windSpeedButton.setTitle(windSpeed, for: .normal)
     }
     
     
